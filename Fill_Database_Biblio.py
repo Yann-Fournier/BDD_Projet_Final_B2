@@ -37,27 +37,54 @@ def load_data():
         url_categories = json.loads(contenu_categories)
         keys = url_categories.keys()
 
-    for i in range(len(keys)):
-        insert_categorie(i, 0, keys[i], False)
+    cpt = 0
+    for key in keys:
+        insert_categorie(cpt, 0, key, False)
+        cpt += 1
 
     # Tous les Auteurs
     auteurs = pd.read_csv("Scrapping/CSV/Save/Auteurs_combined.csv")
     for i in range(len(auteurs)):
-        # print(test3["A"][i], test3["B"][i])
         insert_auteur(i, auteurs["Nom"][i], auteurs["Description"][i], auteurs["Photo"][i])
 
     # Tous les Livres
     livres = pd.read_csv("Scrapping/CSV/Save/Shōnen_combined.csv")
+    cur.execute("SELECT Id FROM Categories WHERE Nom = 'Shōnen';")  # Id = 55
+    results_id_category = cur.fetchall()  # renvoie un tableau de tuple
     for i in range(len(livres)):
-        print("ok")
-        # faire une fonction select des id auteurs
-        # insert_livre(i, )
+        query = "SELECT Id FROM Auteurs WHERE Nom = '" + str(livres["Auteur"][i]) + "';"
+        cur.execute(query)
+        results_id_auteur = cur.fetchall()  # renvoie un tableau de tuple
+        insert_livre(i, results_id_auteur[0][0], results_id_category[0][0], str(livres["Nom"][i]),
+                     str(livres["Description"][i]), str(livres["Photo"][i]), str(livres["Isbn"][i]),
+                     str(livres["Editeur"][i]), float(livres["Prix"][i]))
 
     # Faker des Com
+    insert_com(0,10, "Ce livre est génial. :)")
+    insert_com(1, 11, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
+
     # Commentaires
+    for i in range(len(livres)):
+        insert_commentaires(0, i)
+        insert_commentaires(1, i)
+
     # Ajout de certains Auteurs suivis
+    insert_users_suivi(10, 11)
+    insert_users_suivi(11, 10)
+
     # Ajout de certains Users suivis
-    print("ok")
+    insert_auteurs_suivi(10, 0)
+    insert_auteurs_suivi(10, 1)
+    insert_auteurs_suivi(10, 2)
+    insert_auteurs_suivi(10, 3)
+    insert_auteurs_suivi(10, 4)
+    insert_auteurs_suivi(11, 5)
+    insert_auteurs_suivi(11, 6)
+    insert_auteurs_suivi(11, 7)
+    insert_auteurs_suivi(11, 8)
+    insert_auteurs_suivi(11, 9)
+
+    print("Load des données bien exécuter")
 
 
 def hash_passwd(password):
@@ -144,8 +171,8 @@ def insert_auteurs_suivi(Id_User, Id_Auteur, data=None):
 
 
 #  Fonction pour remplir la database -----------------------------------------------------------------------------------
-# load_sql()
-# load_data()
+load_sql()
+load_data()
 
 
 # Fermer le curseur et la connexion ------------------------------------------------------------------------------------

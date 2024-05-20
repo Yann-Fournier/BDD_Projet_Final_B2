@@ -16,9 +16,14 @@ test2 = pd.DataFrame({"A": C, "D": D})
 test2.to_csv("bidule.csv", mode='a', header=False, encoding='utf-8')
 
 test3 = pd.read_csv("bidule.csv")
-for i in range(len(test3)):
+# for i in range(len(test3)):
     # print(test3["A"][i], test3["B"][i])
-    print(test3.iloc[i])
+    # print(test3.iloc[i])
+
+livres = pd.read_csv("CSV/Save/Shōnen_combined.csv")
+for i in range(len(livres)):
+    print(livres["Auteur"][i])
+    print("------------------")
 #  -----------------------------------------------------------------------------------------------------------------------
 # bidule = "Éditeur :"
 # print(bidule.__contains__("Édi"))
