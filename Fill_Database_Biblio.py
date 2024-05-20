@@ -1,24 +1,16 @@
 import sqlite3
 
-# Se connecter à la base de données (ou créer le fichier .db s'il n'existe pas)
-conn = sqlite3.connect('Database_Biblio.db')
-
-# Créer un curseur
-cur = conn.cursor()
+conn = sqlite3.connect('Database_Biblio.db')  # Se connecter à la base de données
+cur = conn.cursor()  # Créer un curseur
 
 
 def load_sql():
-    # Lire le contenu du fichier .sql
     with open("script.sql", 'r') as fichier:
         script_sql = fichier.read()
 
     try:
-        # Exécuter le script SQL
-        cur.executescript(script_sql)
-
-        # Valider les changements
-        conn.commit()
-
+        cur.executescript(script_sql)  # execution du script
+        conn.commit()  # enregistrement des changements
         print("Script SQL exécuté avec succès")
 
     except sqlite3.Error as e:
@@ -29,8 +21,11 @@ def load_data():
     print("ok")
 
 
+#  Fonction pour remplir la database -----------------------------------------------------------------------------------
 # load_sql()
+# load_data()
 
-# Fermer le curseur et la connexion
+
+# Fermer le curseur et la connexion ------------------------------------------------------------------------------------
 cur.close()
 conn.close()
