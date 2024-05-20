@@ -24,7 +24,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Scrapping\CSV\Save\Shōnen.csv">
+        <entry key="\Scrapping\CSV\Save\Shōnen1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -45,6 +45,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\Save\Shōnen4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\Save\Shōnen5.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\Save\Shōnen_combined.csv">
           <value>
             <Attribute>
@@ -52,21 +66,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Scrapping\CSV\Save\shonen1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Scrapping\CSV\Save\shonen4.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Scrapping\trucks_combined.csv">
+        <entry key="\Scrapping\bidule.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

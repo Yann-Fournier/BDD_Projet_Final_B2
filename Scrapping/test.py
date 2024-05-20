@@ -1,20 +1,24 @@
 #  -----------------------------------------------------------------------------------------------------------------------
-# import pandas as pd
-#
-# A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-# B = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-#
-# C = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-# D = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-#
-# test1 = pd.DataFrame({"A": A, "B": B})
-#
-# test1.to_csv("bidule.csv", encoding='utf-8')
-#
-# test2 = pd.DataFrame({"A": C, "D": D})
-#
-# test2.to_csv("Scrapping/CSV/bidule.csv", mode='a', header=False, encoding='utf-8')
+import pandas as pd
 
+A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+B = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+C = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+D = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+test1 = pd.DataFrame({"A": A, "B": B})
+
+test1.to_csv("bidule.csv", encoding='utf-8')
+
+test2 = pd.DataFrame({"A": C, "D": D})
+
+test2.to_csv("bidule.csv", mode='a', header=False, encoding='utf-8')
+
+test3 = pd.read_csv("bidule.csv")
+for i in range(len(test3)):
+    # print(test3["A"][i], test3["B"][i])
+    print(test3.iloc[i])
 #  -----------------------------------------------------------------------------------------------------------------------
 # bidule = "Éditeur :"
 # print(bidule.__contains__("Édi"))
@@ -139,7 +143,18 @@
 #         fichiers.append(nom)
 
 # print(fichiers)
+#
+# import pandas as pd
+# truc = pd.read_csv("CSV/Biographies.csv")
+# print(truc)
 
-import pandas as pd
-truc = pd.read_csv("CSV/Biographies.csv")
-print(truc)
+#  -----------------------------------------------------------------------------------------------------------------------
+# import json
+# fichier_json_url_Categories = 'CSV/Categories.json'
+# with open(fichier_json_url_Categories, 'r') as fichier_Categories:
+#     contenuCategories = fichier_Categories.read()  # Le code bug si je ne transforme pas le json en str en premier
+#     urlCategories = json.loads(contenuCategories)
+#     Keys = urlCategories.keys()
+# for i in Keys:
+#     print(i)
+# print(Keys)

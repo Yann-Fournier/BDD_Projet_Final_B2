@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Livres
     Photo VARCHAR(200),
     ISBN VARCHAR(50),
     Editeur VARCHAR(100),
-    Prix INTEGER,
+    Prix FLOAT,
 
     PRIMARY KEY (Id),
     FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id),
