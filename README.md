@@ -4,7 +4,7 @@ Vous trouverez dans ce repo la base de donnée de notre projet de fin de deuxiè
 
 - Repository principal : [Projet_Final_B2](https://github.com/Yann-Fournier/Projet_Final_B2)
 
-##### Ce repo contient : 
+### Ce repo contient : 
 - Un code de scrapping des livres d'Amazon (Scrapping/Scrap.py)
 - Un script de nettoyage et de formatage des données récupéré avec le scrapping (Scrapping/Clean.py)
 - Notre base de donnée (Database.db)
