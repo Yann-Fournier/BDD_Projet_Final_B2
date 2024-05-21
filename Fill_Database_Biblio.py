@@ -39,7 +39,7 @@ def load_data():
 
     cpt = 0
     for key in keys:
-        insert_categorie(cpt, 0, key, False)
+        insert_categorie(cpt, key)
         cpt += 1
 
     # Tous les Auteurs
@@ -59,7 +59,37 @@ def load_data():
                      str(livres["Description"][i]), str(livres["Photo"][i]), str(livres["Isbn"][i]),
                      str(livres["Editeur"][i]), float(livres["Prix"][i]))
 
-    # Faker des Com
+    # Toutes les collections
+    insert_collection(0, 10, "J'ai", True)
+    insert_collection(1, 10, "Ma pile à lire", True)
+    insert_collection(2, 10, "Je lis", True)
+    insert_collection(3, 10, "J'ai lu", True)
+    insert_collection(4, 10, "J'aime", True)
+    insert_collection(5, 10, "Ma liste de souhait", True)
+
+    insert_collection(6, 11, "J'ai", True)
+    insert_collection(7, 11, "Ma pile à lire", True)
+    insert_collection(8, 11, "Je lis", True)
+    insert_collection(9, 11, "J'ai lu", True)
+    insert_collection(10, 11, "J'aime", True)
+    insert_collection(11, 11, "Ma liste de souhait", True)
+
+    # Liste des collections
+    insert_collec(0, 0)
+    insert_collec(1, 0)
+    insert_collec(2, 0)
+    insert_collec(0, 1)
+    insert_collec(1, 1)
+    insert_collec(2, 1)
+
+    insert_collec(3, 6)
+    insert_collec(4, 6)
+    insert_collec(5, 6)
+    insert_collec(3, 7)
+    insert_collec(4, 7)
+    insert_collec(5, 7)
+
+    # Insert des listes des Commentaires
     insert_com(0,10, "Ce livre est génial. :)")
     insert_com(1, 11, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
 
@@ -111,13 +141,13 @@ def insert_auteur(Id, Nom, Description, Photo, data=None):
     conn.commit()
 
 
-def insert_categorie(Id, Id_Auteur, Nom, Is_Private, data=None):
+def insert_categorie(Id, Nom, data=None):
     if data is None:
         data = [
-            Id, Id_Auteur, Nom, Is_Private
+            Id, Nom
         ]
     conn.execute(
-        "INSERT INTO Categories (Id, Id_Auteur, Nom, Is_Private) VALUES(?, ?, ?, ?)", data)
+        "INSERT INTO Categories (Id, Nom) VALUES(?, ?)", data)
     conn.commit()
 
 
@@ -128,6 +158,26 @@ def insert_livre(Id, Id_Auteur, Id_Categorie, Nom, Description, Photo, ISBN, Edi
         ]
     conn.execute(
         "INSERT INTO Livres (Id, Id_Auteur, Id_Categorie, Nom, Description, Photo, ISBN, Editeur, Prix) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", data)
+    conn.commit()
+
+
+def insert_collection(Id, Id_User, Nom, Is_Private, data=None):
+    if data is None:
+        data = [
+            Id, Id_User, Nom, Is_Private
+        ]
+    conn.execute(
+        "INSERT INTO Collections (Id, Id_User, Nom, Is_Private) VALUES(?, ?, ?, ?)", data)
+    conn.commit()
+
+
+def insert_collec(Id_Livre, Id_Collection, data=None):
+    if data is None:
+        data = [
+            Id_Livre, Id_Collection
+        ]
+    conn.execute(
+        "INSERT INTO Collec (Id_Livre, Id_Collection) VALUES(?, ?)", data)
     conn.commit()
 
 

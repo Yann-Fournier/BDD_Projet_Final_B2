@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS Users_Suivi;
 DROP TABLE IF EXISTS Auteurs_Suivi;
 DROP TABLE IF EXISTS Commentaires;
 DROP TABLE IF EXISTS Com;
+DROP TABLE IF EXISTS Collec;
+DROP TABLE IF EXISTS Collections;
 DROP TABLE IF EXISTS Livres;
 DROP TABLE IF EXISTS Categories;
 DROP TABLE IF EXISTS Auteurs;
@@ -32,12 +34,9 @@ CREATE TABLE IF NOT EXISTS Auteurs
 CREATE TABLE IF NOT EXISTS Categories
 (
     Id INTEGER,
-    Id_Auteur INTEGER,
     Nom VARCHAR(50),
-    Is_Private BOOL,
 
-    PRIMARY KEY (Id),
-    FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id)
+    PRIMARY KEY (Id)
 );
 
 CREATE TABLE IF NOT EXISTS Livres
@@ -55,6 +54,26 @@ CREATE TABLE IF NOT EXISTS Livres
     PRIMARY KEY (Id),
     FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id),
     FOREIGN KEY (Id_Categorie) REFERENCES Categories (Id)
+);
+
+CREATE TABLE IF NOT EXISTS Collections
+(
+    Id INTEGER,
+    Id_User INTEGER,
+    Nom VARCHAR(100),
+    Is_Private BOOL,
+
+    PRIMARY KEY (Id),
+    FOREIGN KEY (Id_User) REFERENCES Users (Id)
+);
+
+CREATE TABLE IF NOT EXISTS Collec
+(
+    Id_Livre INTEGER,
+    Id_Collection INTEGER,
+
+    FOREIGN KEY (Id_Livre) REFERENCES Livres (Id),
+    FOREIGN KEY (Id_Collection) REFERENCES Collections (Id)
 );
 
 CREATE TABLE IF NOT EXISTS Com
