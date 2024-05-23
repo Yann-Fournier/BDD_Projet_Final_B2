@@ -23,13 +23,21 @@ def load_sql():
 
 def load_data():
     # 5 Users (3 admins et 2 normaux)
-    insert_user(0, "admin@biblio.com", hash_passwd("admin1234"), "", "Admin")
-    insert_user(1, "yann@biblio.com", hash_passwd("yann1234"), "", "Yann Fournier")
-    insert_user(2, "adriana@biblio.com", hash_passwd("adriana1234"), "", "Adriana Pullig")
+    insert_user(0, "admin@biblio.com", hash_passwd("admin1234"), "", "Admin", True)
+    insert_user(1, "yann@biblio.com", hash_passwd("yann1234"), "", "Yann Fournier", True)
+    insert_user(2, "adriana@biblio.com", hash_passwd("adriana1234"), "", "Adriana Pullig", True)
 
-    insert_user(10, "adriana@ynov.com", hash_passwd("yann"), "", "Yann")
-    insert_user(11, "adriana@ynov.com", hash_passwd("adriana"), "", "Adriana")
+    insert_user(3, "adriana@ynov.com", hash_passwd("yann"), "", "Yann", False)
+    insert_user(4, "adriana@ynov.com", hash_passwd("adriana"), "", "Adriana", False)
 
+    # Token d'Auth
+    insert_auth(0, hash_passwd("Admin"))
+    insert_auth(1, hash_passwd("Yann Fournier"))
+    insert_auth(2, hash_passwd("Adriana Pullig"))
+    
+    insert_auth(3, hash_passwd("Yann"))
+    insert_auth(4, hash_passwd("Adriana"))
+    
     # Toutes les catégories
     fichier_json_url_categories = 'Scrapping/CSV/Categories.json'
     with open(fichier_json_url_categories, 'r') as fichier_categories:
@@ -60,19 +68,19 @@ def load_data():
                      str(livres["Editeur"][i]), float(livres["Prix"][i]))
 
     # Toutes les collections
-    insert_collection(0, 10, "J'ai", True)
-    insert_collection(1, 10, "Ma pile à lire", True)
-    insert_collection(2, 10, "Je lis", True)
-    insert_collection(3, 10, "J'ai lu", True)
-    insert_collection(4, 10, "J'aime", True)
-    insert_collection(5, 10, "Ma liste de souhait", True)
+    insert_collection(0, 3, "J'ai", True)
+    insert_collection(1, 3, "Ma pile à lire", True)
+    insert_collection(2, 3, "Je lis", True)
+    insert_collection(3, 3, "J'ai lu", True)
+    insert_collection(4, 3, "J'aime", True)
+    insert_collection(5, 3, "Ma liste de souhait", True)
 
-    insert_collection(6, 11, "J'ai", True)
-    insert_collection(7, 11, "Ma pile à lire", True)
-    insert_collection(8, 11, "Je lis", True)
-    insert_collection(9, 11, "J'ai lu", True)
-    insert_collection(10, 11, "J'aime", True)
-    insert_collection(11, 11, "Ma liste de souhait", True)
+    insert_collection(6, 4, "J'ai", True)
+    insert_collection(7, 4, "Ma pile à lire", True)
+    insert_collection(8, 4, "Je lis", True)
+    insert_collection(9, 4, "J'ai lu", True)
+    insert_collection(10, 4, "J'aime", True)
+    insert_collection(11, 4, "Ma liste de souhait", True)
 
     # Liste des collections
     insert_collec(0, 0)
@@ -90,8 +98,8 @@ def load_data():
     insert_collec(5, 7)
 
     # Insert des listes des Commentaires
-    insert_com(0,10, "Ce livre est génial. :)")
-    insert_com(1, 11, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
+    insert_com(0, 3, "Ce livre est génial. :)")
+    insert_com(1, 4, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
 
     # Commentaires
     for i in range(len(livres)):
@@ -99,20 +107,20 @@ def load_data():
         insert_commentaires(1, i)
 
     # Ajout de certains Auteurs suivis
-    insert_users_suivi(10, 11)
-    insert_users_suivi(11, 10)
+    insert_users_suivi(3, 4)
+    insert_users_suivi(4, 3)
 
     # Ajout de certains Users suivis
-    insert_auteurs_suivi(10, 0)
-    insert_auteurs_suivi(10, 1)
-    insert_auteurs_suivi(10, 2)
-    insert_auteurs_suivi(10, 3)
-    insert_auteurs_suivi(10, 4)
-    insert_auteurs_suivi(11, 5)
-    insert_auteurs_suivi(11, 6)
-    insert_auteurs_suivi(11, 7)
-    insert_auteurs_suivi(11, 8)
-    insert_auteurs_suivi(11, 9)
+    insert_auteurs_suivi(3, 0)
+    insert_auteurs_suivi(3, 1)
+    insert_auteurs_suivi(3, 2)
+    insert_auteurs_suivi(3, 3)
+    insert_auteurs_suivi(3, 4)
+    insert_auteurs_suivi(4, 5)
+    insert_auteurs_suivi(4, 6)
+    insert_auteurs_suivi(4, 7)
+    insert_auteurs_suivi(4, 8)
+    insert_auteurs_suivi(4, 9)
 
     print("Load des données bien exécuter")
 
@@ -121,13 +129,13 @@ def hash_passwd(password):
     return hashlib.sha256(password.encode('utf-8')).hexdigest()
 
 
-def insert_user(Id, Email, Mdp, Photo, Nom, data=None):
+def insert_user(Id, Email, Mdp, Photo, Nom, Is_Admin, data=None):
     if data is None:
         data = [
-            Id, Email, Mdp, Photo, Nom
+            Id, Email, Mdp, Photo, Nom, Is_Admin
         ]
     conn.execute(
-        "INSERT INTO Users (Id, Email, Mdp, Photo, Nom) VALUES(?, ?, ?, ?, ?)", data)
+        "INSERT INTO Users (Id, Email, Mdp, Photo, Nom, Is_Admin) VALUES(?, ?, ?, ?, ?, ?)", data)
     conn.commit()
 
 
@@ -220,6 +228,15 @@ def insert_auteurs_suivi(Id_User, Id_Auteur, data=None):
     conn.commit()
 
 
+def insert_auth(Id, Token, data=None):
+    if data is None:
+        data = [
+            Id, Token
+        ]
+    conn.execute(
+        "INSERT INTO Auth (Id, Token) VALUES(?, ?)", data)
+    conn.commit()
+    
 #  Fonction pour remplir la database -----------------------------------------------------------------------------------
 load_sql()
 load_data()

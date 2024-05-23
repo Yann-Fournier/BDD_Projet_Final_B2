@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS Auth;
 DROP TABLE IF EXISTS Users_Suivi;
 DROP TABLE IF EXISTS Auteurs_Suivi;
 DROP TABLE IF EXISTS Commentaires;
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS Users
     Mdp VARCHAR(200),
     Photo VARCHAR(200),
     Nom VARCHAR(50),
+    Is_Admin BOOL,
 
     PRIMARY KEY (Id)
 );
@@ -113,3 +115,11 @@ CREATE TABLE IF NOT EXISTS Auteurs_Suivi
     FOREIGN KEY (Id_User) REFERENCES Users (Id),
     FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id)
 );
+
+CREATE TABLE IF NOT EXISTS Auth
+(
+    Id INT,
+    Token VARCHAR(100),
+
+    FOREIGN KEY (Id) REFERENCES Users (Id)
+)
