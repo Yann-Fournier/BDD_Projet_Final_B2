@@ -24,10 +24,10 @@ def load_sql():
 def load_data():
     # 5 Users (3 admins et 2 normaux)
     insert_user(0, "admin@biblio.com", hash_passwd("admin1234"), "", "Admin", True)
-    insert_user(1, "yann@biblio.com", hash_passwd("yann1234"), "", "Yann Fournier", True)
-    insert_user(2, "adriana@biblio.com", hash_passwd("adriana1234"), "", "Adriana Pullig", True)
+    insert_user(1, "yann.fournier@biblio.com", hash_passwd("yann1234"), "", "Yann Fournier", True)
+    insert_user(2, "adriana.fournier@biblio.com", hash_passwd("adriana1234"), "", "Adriana Pullig", True)
 
-    insert_user(3, "adriana@ynov.com", hash_passwd("yann"), "", "Yann", False)
+    insert_user(3, "yann@ynov.com", hash_passwd("yann"), "", "Yann", False)
     insert_user(4, "adriana@ynov.com", hash_passwd("adriana"), "", "Adriana", False)
 
     # Token d'Auth
