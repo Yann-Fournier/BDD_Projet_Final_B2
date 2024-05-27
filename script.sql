@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS Auth;
 DROP TABLE IF EXISTS Users_Suivi;
 DROP TABLE IF EXISTS Auteurs_Suivi;
 DROP TABLE IF EXISTS Commentaires;
-DROP TABLE IF EXISTS Com;
 DROP TABLE IF EXISTS Collec;
 DROP TABLE IF EXISTS Collections;
 DROP TABLE IF EXISTS Livres;
@@ -78,22 +77,15 @@ CREATE TABLE IF NOT EXISTS Collec
     FOREIGN KEY (Id_Collection) REFERENCES Collections (Id)
 );
 
-CREATE TABLE IF NOT EXISTS Com
+CREATE TABLE IF NOT EXISTS Commentaires
 (
     Id INTEGER,
     Id_User INTEGER,
+    Id_Livre INTEGER,
     Com VARCHAR(200),
 
     PRIMARY KEY (Id),
-    FOREIGN KEY (Id_User) REFERENCES Users (Id)
-);
-
-CREATE TABLE IF NOT EXISTS Commentaires
-(
-    Id_Com INTEGER,
-    Id_Livre INTEGER,
-
-    FOREIGN KEY (Id_Com) REFERENCES Com (Id),
+    FOREIGN KEY (Id_User) REFERENCES Users (Id),
     FOREIGN KEY (Id_Livre) REFERENCES Livres (Id)
 );
 

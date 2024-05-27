@@ -97,14 +97,10 @@ def load_data():
     insert_collec(4, 7)
     insert_collec(5, 7)
 
-    # Insert des listes des Commentaires
-    insert_com(0, 3, "Ce livre est génial. :)")
-    insert_com(1, 4, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
-
     # Commentaires
     for i in range(len(livres)):
-        insert_commentaires(0, i)
-        insert_commentaires(1, i)
+        insert_commentaires(3, i, "Ce livre est génial. :)")
+        insert_commentaires(4, i, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
 
     # Ajout de certains Auteurs suivis
     insert_users_suivi(3, 4)
@@ -189,24 +185,15 @@ def insert_collec(Id_Livre, Id_Collection, data=None):
     conn.commit()
 
 
-def insert_com(Id, Id_User, Com, data=None):
+def insert_commentaires(Id_User, Id_Livre,Com, data=None):
     if data is None:
         data = [
-            Id, Id_User, Com
+            Id_User, Id_Livre, Com
         ]
     conn.execute(
-        "INSERT INTO Com (Id, Id_User, Com) VALUES(?, ?, ?)", data)
+        "INSERT INTO Commentaires (Id_User, Id_Livre, Com) VALUES(?, ?, ?)", data)
     conn.commit()
 
-
-def insert_commentaires(Id_Com, Id_Livre, data=None):
-    if data is None:
-        data = [
-            Id_Com, Id_Livre
-        ]
-    conn.execute(
-        "INSERT INTO Commentaires (Id_Com, Id_Livre) VALUES(?, ?)", data)
-    conn.commit()
 
 def insert_users_suivi(Id_User, Id_User_Suivi, data=None):
     if data is None:
