@@ -79,190 +79,35 @@
     "Economie internationale": [],
     "Economieb ndustrielle": [],
     "Histoire economique": [],
-    "Croissance et crise": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Economie politique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Developpement": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Grandes doctrines et courants philosophiques": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Histoires et ecoles de pensee": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Initiation a la philosophique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Religieux": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Ethique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "M\u00e9taphysique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Politique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Geopolitique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Geographie humaine": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Atlas et cartes": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Pays": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie du travail": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "References": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie religieuse": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie politique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie urbaine": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie des organisations": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sociologie historique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Initiation a la sociologie": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Culture": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Immigration integration racisme": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Violence et deviances": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Depression": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Famille": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Conflits": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Tueur en serie et profilage": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Travail": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Ethnologie et anthropologie": [
-        1,
-        2,
-        3,
-        4
-    ]
+    "Croissance et crise": [],
+    "Economie politique": [],
+    "Developpement": [],
+    "Grandes doctrines et courants philosophiques": [],
+    "Histoires et ecoles de pensee": [],
+    "Initiation a la philosophique": [],
+    "Religieux": [],
+    "Ethique": [],
+    "M\u00e9taphysique": [],
+    "Politique": [],
+    "Geopolitique": [],
+    "Geographie humaine": [],
+    "Atlas et cartes": [],
+    "Pays": [],
+    "Sociologie du travail": [],
+    "References": [],
+    "Sociologie religieuse": [],
+    "Sociologie politique": [],
+    "Sociologie urbaine": [],
+    "Sociologie des organisations": [],
+    "Sociologie historique": [],
+    "Initiation a la sociologie": [],
+    "Culture": [],
+    "Immigration integration racisme": [],
+    "Violence et deviances": [],
+    "Depression": [],
+    "Famille": [],
+    "Conflits": [],
+    "Tueur en serie et profilage": [],
+    "Travail": [],
+    "Ethnologie et anthropologie": []
 }

@@ -45,6 +45,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\AuteursCroissance et crise.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\AuteursCulturisme et haltérophilie.csv">
           <value>
             <Attribute>
@@ -283,6 +290,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\LivresCroissance et crise.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\LivresCulturisme et haltérophilie.csv">
           <value>
             <Attribute>
@@ -305,6 +319,13 @@
           </value>
         </entry>
         <entry key="\Scrapping\CSV\LivresGestion de la douleur.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\LivresGrandes doctrines et courants philosophiques.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -396,6 +417,13 @@
           </value>
         </entry>
         <entry key="\Scrapping\CSV\LivresPoesie.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\LivresPolitique.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
