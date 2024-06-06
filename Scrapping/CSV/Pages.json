@@ -35,210 +35,47 @@
     "Compteurs de calories": [],
     "Yoga": [],
     "Culturisme et halt\u00e9rophilie": [],
-    "Arts martiaux": [
-        1,
-        2,
-        3,
-        4
-    ],
+    "Arts martiaux": [],
     "Jogging - Footing": [
-        1,
-        2,
-        3,
-        4
+        3
     ],
-    "Natation": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Marche": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Marathon": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Blessures et reeducation": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Stress": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Phobies": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Depression angoisses et stress": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Trouble de l humeur": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Trouble de stress post-traumatique": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Maladie d Alzheimer": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Troubles anxieux": [
-        1,
-        2,
-        3,
-        4
-    ],
+    "Natation": [],
+    "Marche": [],
+    "Marathon": [],
+    "Blessures et reeducation": [],
+    "Stress": [],
+    "Phobies": [],
+    "Depression angoisses et stress": [],
+    "Trouble de l humeur": [],
+    "Trouble de stress post-traumatique": [],
+    "Maladie d Alzheimer": [],
+    "Troubles anxieux": [],
     "Emotions": [
         1,
         2,
         3,
         4
     ],
-    "Sante personnelle": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Vieillissement": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Comics": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Hero\u00efc fantasy": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Science-Fiction": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Romans graphiques": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Myst\u00e8re et suspense": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sh\u014dnen": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Josei": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Yaoi": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Yuri": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Sh\u014djo": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Medias et communication": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Radio": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Presse": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Communication": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Television": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Internet": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Liberte de la presse": [
-        1,
-        2,
-        3,
-        4
-    ],
-    "Bourse et finance": [
-        1,
-        2,
-        3,
-        4
-    ],
+    "Sante personnelle": [],
+    "Vieillissement": [],
+    "Comics": [],
+    "Hero\u00efc fantasy": [],
+    "Science-Fiction": [],
+    "Romans graphiques": [],
+    "Myst\u00e8re et suspense": [],
+    "Sh\u014dnen": [],
+    "Josei": [],
+    "Yaoi": [],
+    "Yuri": [],
+    "Sh\u014djo": [],
+    "Medias et communication": [],
+    "Radio": [],
+    "Presse": [],
+    "Communication": [],
+    "Television": [],
+    "Internet": [],
+    "Liberte de la presse": [],
+    "Bourse et finance": [],
     "Economie internationale": [
         1,
         2,
