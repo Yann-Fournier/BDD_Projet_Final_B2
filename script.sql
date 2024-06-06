@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS Commentaires;
 DROP TABLE IF EXISTS Collec;
 DROP TABLE IF EXISTS Collections;
 DROP TABLE IF EXISTS Livres;
-DROP TABLE IF EXISTS Categories;
 DROP TABLE IF EXISTS Auteurs;
 DROP TABLE IF EXISTS Users;
 
@@ -32,29 +31,20 @@ CREATE TABLE IF NOT EXISTS Auteurs
     PRIMARY KEY (Id)
 );
 
-CREATE TABLE IF NOT EXISTS Categories
-(
-    Id INTEGER,
-    Nom VARCHAR(50),
-
-    PRIMARY KEY (Id)
-);
-
 CREATE TABLE IF NOT EXISTS Livres
 (
     Id INTEGER,
     Id_Auteur INTEGER,
-    Id_Categorie INTEGER,
     Nom VARCHAR(100),
     Description VARCHAR(500),
     Photo VARCHAR(200),
     ISBN VARCHAR(50),
     Editeur VARCHAR(100),
     Prix FLOAT,
+    Categorie VARCHAR(100),
 
     PRIMARY KEY (Id),
-    FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id),
-    FOREIGN KEY (Id_Categorie) REFERENCES Categories (Id)
+    FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id)
 );
 
 CREATE TABLE IF NOT EXISTS Collections
