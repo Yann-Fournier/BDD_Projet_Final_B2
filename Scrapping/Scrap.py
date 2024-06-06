@@ -50,7 +50,7 @@ for key, value in urlCategories.items():
         try:
             # On va sur chacune des pages
             driver.get(value.format(i, i))
-            time.sleep(10)
+            time.sleep(5)
 
             #  Page simple ---------------------------------------------------------------------------------------------
             # Je divise la recupération des liens en deux requêtes, car sinon les xpath est trop grand et l'IDE n'est pas content
@@ -87,7 +87,7 @@ for key, value in urlCategories.items():
                 cpt += 1  # tkt
                 # On va sur chacune des pages des livres pour récupérer les infos qui nous interesse.
                 driver.get(link)
-                time.sleep(10)
+                time.sleep(2)
 
                 # Nom --------------------------------------------------------------------------------------------------
                 try:
