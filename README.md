@@ -1,3 +1,14 @@
+# To do list
+
+- ajouter la catégorie du livre dans le CSV des livres
+- formater le str quand je le récupère dans le code de scrapping => enlever les apostrophes (nom, desc, editeur, auteur, categorie, nom_auteur, desc_auteur)
+- modifier le MCD en supprimant la table Categories
+- modifier le script SQL => suppr table categorie et modif champs categorie dans Livres
+- modifier le remplissage de la database en consequence
+- modifier l'API à cause des de la suppression d'une table
+- recuperer les modif fait dans le repo principale
+- modif API pour ajouter l'ajout de collection quand on crée un utilisateur
+
 # BDD Projet Final B2 (avec Patchouf)
 
 Vous trouverez dans ce repo la base de donnée de notre projet de fin de deuxième année.

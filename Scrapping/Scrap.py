@@ -30,8 +30,7 @@ for key, value in urlCategories.items():
     print(key)
     indicesPagesPasPrises2 = []
     #  Boucle des pages ------------------------------------------------------------------------------------------------
-    # for i in range(1, 76):
-    for i in range(1, 5):
+    for i in range(1, 76):
         # Initialisation tableaux à chaque nouvelle page ---------------------------------------------------------------
         nom = []
         description = []
@@ -50,7 +49,7 @@ for key, value in urlCategories.items():
         try:
             # On va sur chacune des pages
             driver.get(value.format(i, i))
-            time.sleep(5)
+            time.sleep(2)
 
             #  Page simple ---------------------------------------------------------------------------------------------
             # Je divise la recupération des liens en deux requêtes, car sinon les xpath est trop grand et l'IDE n'est pas content

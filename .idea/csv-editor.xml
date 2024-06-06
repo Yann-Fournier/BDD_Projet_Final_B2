@@ -248,6 +248,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\Combined_Authors.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\Combined_Books.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\LivresAllergies.csv">
           <value>
             <Attribute>
@@ -312,6 +326,13 @@
           </value>
         </entry>
         <entry key="\Scrapping\CSV\LivresDietetique.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\LivresGeopolitique.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -507,6 +528,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\LivresYuri.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\Save\Auteurs.csv">
           <value>
             <Attribute>
@@ -557,6 +585,20 @@
           </value>
         </entry>
         <entry key="\Scrapping\CSV\Save\Shōnen_combined.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\bidule.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\truc.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

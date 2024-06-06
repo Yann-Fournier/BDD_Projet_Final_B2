@@ -50,17 +50,21 @@ def load_data():
         cpt += 1
 
     # Tous les Auteurs
-    auteurs = pd.read_csv("Scrapping/CSV/Save/Auteurs_combined.csv")
+    auteurs = pd.read_csv("Scrapping/CSV/Save/Combined_Authors.csv")
     for i in range(len(auteurs)):
         insert_auteur(i, auteurs["Nom"][i], auteurs["Description"][i], auteurs["Photo"][i])
 
     # Tous les Livres
-    livres = pd.read_csv("Scrapping/CSV/Save/Shōnen_combined.csv")
+    livres = pd.read_csv("Scrapping/CSV/Save/Combined_Books.csv")
     cur.execute("SELECT Id FROM Categories WHERE Nom = 'Shōnen';")  # Id = 55
     results_id_category = cur.fetchall()  # renvoie un tableau de tuple
     for i in range(len(livres)):
-        query = "SELECT Id FROM Auteurs WHERE Nom = '" + str(livres["Auteur"][i]) + "';"
-        cur.execute(query)
+        query = "SELECT Id FROM Auteurs WHERE Nom = '" + livres["Auteur"][i] + "';"
+        try:
+            cur.execute(query)
+        except:
+            print(query)
+            cur.execute(query)
         results_id_auteur = cur.fetchall()  # renvoie un tableau de tuple
         insert_livre(i, results_id_auteur[0][0], results_id_category[0][0], str(livres["Nom"][i]),
                      str(livres["Description"][i]), str(livres["Photo"][i]), str(livres["Isbn"][i]),
