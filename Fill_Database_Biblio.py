@@ -46,7 +46,7 @@ def load_data():
     cpt = 0
     for key in keys:
         insert_categorie(cpt, key)
-        cpt += 1
+        cpt = cpt + 1
 
     # Tous les Auteurs
     auteurs = pd.read_csv("Scrapping/CSV/Combined_Authors.csv")
@@ -57,18 +57,16 @@ def load_data():
     livres = pd.read_csv("Scrapping/CSV/Combined_Books.csv")
     for i in range(len(livres)):
         query_auteur = "SELECT Id FROM Auteurs WHERE Nom = '" + livres["Auteur"][i] + "';"
-        query_categorie = "SELECT Id FROM Categorie WHERE Nom = '" + livres["Categorie"][i] + "';"
+        query_categorie = "SELECT Id FROM Categories WHERE Nom = '" + livres["Categorie"][i] + "';"
         try:
             cur.execute(query_auteur)
         except:
             print(query_auteur)
-            # cur.execute(queryAuteur)
         results_id_auteur = cur.fetchall()  # renvoie un tableau de tuple
         try:
             cur.execute(query_categorie)
         except:
             print(query_categorie)
-            # cur.execute(query_categorie)
         results_id_categorie = cur.fetchall()  # renvoie un tableau de tuple
         insert_livre(i, results_id_auteur[0][0], results_id_categorie[0][0], str(livres["Nom"][i]),
                      str(livres["Description"][i]), str(livres["Photo"][i]), str(livres["Isbn"][i]),
