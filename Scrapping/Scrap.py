@@ -5,7 +5,7 @@ import time
 import json
 import numpy as np
 
-# Faire les paths multiples pour toutes les différentes infos à récupérer (nom, Desc, Auteur, photo, ...)
+
 # Créez une instance de navigateur Chrome
 driver = webdriver.Chrome()
 
@@ -22,7 +22,7 @@ with open(fichier_json_Pages, 'r') as fichier_Pages:
 
 # Configuration --------------------------------------------------------------------------------------------------------
 driver.get('https://www.amazon.fr')
-time.sleep(20)
+time.sleep(20)  # Au cas où il y aurait un kapcha à faire
 
 #  Boucle des catégories --------------------------------------------------------------------
 for key, value in urlCategories.items():
@@ -30,7 +30,8 @@ for key, value in urlCategories.items():
     print(key)
     indicesPagesPasPrises2 = []
     #  Boucle des pages ------------------------------------------------------------------------------------------------
-    for i in range(1, 76):
+    # for i in range(1, 76):
+    for i in range(1, 6):
         # Initialisation tableaux à chaque nouvelle page ---------------------------------------------------------------
         nom = []
         description = []
@@ -49,7 +50,6 @@ for key, value in urlCategories.items():
         try:
             # On va sur chacune des pages
             driver.get(value.format(i, i))
-            time.sleep(2)
 
             #  Page simple ---------------------------------------------------------------------------------------------
             # Je divise la recupération des liens en deux requêtes, car sinon les xpath est trop grand et l'IDE n'est pas content
@@ -78,29 +78,25 @@ for key, value in urlCategories.items():
                         linksInPage.append(div.find_element(By.XPATH, './div/div/span/div/div/div/div[1]/div/div[2]/div/span/a').get_attribute('href'))  # chemin relatif
                     except:
                         linksInPage.append(div.find_element(By.XPATH, '/html/body/div[1]/div[1]/div[1]/div[1]/div/span[1]/div[1]/div[2]/div/div/div/div/span/div/div/div/div[1]/div/div[2]/div/span/a').get_attribute('href'))  # chemin complet
-            print(i, ":", len(linksInPage),
-                  "--------------------------------------------------------------------------------------")
+            print(i, ":", len(linksInPage), "--------------------------------------------------------------------------------------")
 
-            cpt = 0  # tkt
+            cpt = 0  # tkt compteur pour l'affichage
             for link in linksInPage:
                 cpt += 1  # tkt
                 # On va sur chacune des pages des livres pour récupérer les infos qui nous interesse.
                 driver.get(link)
-                time.sleep(2)
 
                 # Nom --------------------------------------------------------------------------------------------------
                 try:
-                    name = driver.find_element(By.XPATH,
-                                               '/html/body/div[2]/div/div[4]/div[1]/div[8]/div[2]/div/h1/span[1]').text
+                    name = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[8]/div[2]/div/h1/span[1]').text
                 except:
                     name = ""
-
                 if name == "":
                     try:
-                        name = driver.find_element(By.XPATH,
-                                                   '/html/body/div[2]/div/div[4]/div[1]/div[7]/div[2]/div/h1/span[1]').text
+                        name = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[7]/div[2]/div/h1/span[1]').text
                     except:
                         name = ""
+                name = name.replace("'", "&#39")
                 nom.append(name)
 
                 # Description ------------------------------------------------------------------------------------------
@@ -123,6 +119,7 @@ for key, value in urlCategories.items():
                         desc = driver.find_element(By.XPATH,'/html/body/div[2]/div/div[4]/div[1]/div[7]/div[27]/div/div[1]').text
                     except:
                         desc = ""
+                desc = desc.replace("'", "&#39")
                 description.append(desc)
 
                 #  Photo -----------------------------------------------------------------------------------------------
@@ -144,13 +141,14 @@ for key, value in urlCategories.items():
                     details = driver.find_elements(By.XPATH, '/html/body/div[2]/div/div[4]/div[26]/div/div[1]/ul/li')
                     for det in details:
                         truc = det.find_element(By.XPATH, './span/span[1]').text
-                        # print(truc)
                         if truc.__contains__("ISBN-13"):
                             Isbn = det.find_element(By.XPATH, './span/span[2]').text
                         elif truc.__contains__("Éditeur"):
                             edit = det.find_element(By.XPATH, './span/span[2]').text
                 except:
                     pass
+                Isbn = Isbn.replace("'", "&#39")
+                edit = edit.replace("'", "&#39")
                 isbn.append(Isbn)
                 editeur.append(edit)
 
@@ -164,6 +162,7 @@ for key, value in urlCategories.items():
                         aut = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[7]/div[3]/div/span/a').text
                     except:
                         aut = ""
+                aut = aut.replace("'", "&#39")
                 auteur.append(aut)
                 nomAuteur.append(aut)
 
@@ -177,14 +176,12 @@ for key, value in urlCategories.items():
                         descAut = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[25]/div[2]/div[2]/p/span').text
                     except:
                         descAut = ""
+                descAut = descAut.replace("'", "&#39")
                 descAuteur.append(descAut)
 
                 # Photo Auteur -----------------------------------------------------------------------------------------
                 try:
-                    picAut = driver.find_element(By.XPATH,
-                                                 '/html/body/div[2]/div/div[4]/div[28]/div/div/div[2]/div/div/div/div[1]/div[1]/div/img').get_attribute(
-                        'src')
-
+                    picAut = driver.find_element(By.XPATH,'/html/body/div[2]/div/div[4]/div[28]/div/div/div[2]/div/div/div/div[1]/div[1]/div/img').get_attribute('src')
                 except:
                     picAut = ""
                 photoAuteur.append(picAut)
@@ -192,38 +189,31 @@ for key, value in urlCategories.items():
                 #  Prix ------------------------------------------------------------------------------------------------
                 price = 0.0
                 try:
-                    priceInt = driver.find_element(By.XPATH,
-                                                   '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/div[1]/div/div[2]/div/form/div/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
-                    priceFloat = driver.find_element(By.XPATH,
-                                                     '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/div[1]/div/div[2]/div/form/div/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
+                    priceInt = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/div[1]/div/div[2]/div/form/div/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
+                    priceFloat = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/div[1]/div/div[2]/div/form/div/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
                     price = priceInt + "." + priceFloat
                     price = float(price)
                 except:
                     price = 0.0
                 if price == 0.0:
                     try:
-                        priceInt = driver.find_element(By.XPATH,
-                                                       '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
-                        priceFloat = driver.find_element(By.XPATH,
-                                                         '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
+                        priceInt = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
+                        priceFloat = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
                         price = priceInt + "." + priceFloat
                         price = float(price)
                     except:
                         price = 0.0
                 if price == 0.0:
                     try:
-                        priceInt = driver.find_element(By.XPATH,
-                                                       '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[2]/div/div/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
-                        priceFloat = driver.find_element(By.XPATH,
-                                                         '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[2]/div/div/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
+                        priceInt = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[2]/div/div/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[1]').text
+                        priceFloat = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[4]/div/div[1]/div/div[2]/div/div/div/div/div/form/div/div/div/div/div[4]/div/div[2]/div[1]/div[1]/span[2]/span[2]/span[2]').text
                         price = priceInt + "." + priceFloat
                         price = float(price)
                     except:
                         price = 0.0
                 if price == 0.0:
                     try:
-                        priceSTR = driver.find_element(By.XPATH,
-                                                       '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[2]/div/div/div/div[2]/span/span/a/span[2]/span')
+                        priceSTR = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[2]/div/div/div/div[2]/span/span/a/span[2]/span')
                         priceSTR = priceSTR[:-2]
                         priceSTR = priceSTR.replace(',', '.')
                         price = float(priceSTR)
@@ -231,8 +221,7 @@ for key, value in urlCategories.items():
                         price = 0.0
                 if price == 0.0:
                     try:
-                        priceSTR = driver.find_element(By.XPATH,
-                                                       '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[2]/div/div/div[2]/div[2]/span/span/a/span[2]/span')
+                        priceSTR = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div[1]/div[5]/div[4]/div[2]/div/div/div[2]/div[2]/span/span/a/span[2]/span')
                         priceSTR = priceSTR[:-2]
                         priceSTR = priceSTR.replace(',', '.')
                         price = float(priceSTR)
@@ -241,7 +230,6 @@ for key, value in urlCategories.items():
                 if price == 0.0:
                     nombre_aleatoire = np.random.uniform(5.0, 20.0)
                     price = round(nombre_aleatoire, 2)
-                # print(price)
                 prix.append(price)
 
                 # Catégorie --------------------------------------------------------------------------------------------
@@ -250,11 +238,11 @@ for key, value in urlCategories.items():
                 print(cpt, "/", len(linksInPage))
 
             #  Ajout des données dans la CSV ---------------------------------------------------------------------------
-            if len(nom) == len(description) == len(photo) == len(isbn) == len(editeur) == len(prix) == len(auteur):
+            if len(nom) == len(description) == len(photo) == len(isbn) == len(editeur) == len(prix) == len(auteur) == len(categorie):
                 time.sleep(1)
                 dfLivres = pd.DataFrame(
                     {"Nom": nom, "Prix": prix, "Description": description, "Isbn": isbn, "Photo": photo,
-                     "Editeur": editeur, "Auteur": auteur})
+                     "Editeur": editeur, "Auteur": auteur, "Categorie": categorie})
                 fileNameLivres = 'CSV/Livres' + key + '.csv'
                 # fileNameLivres = "Scrapping/CSV/Livres" + str(key) + ".csv"
                 if i == 1:
@@ -262,7 +250,6 @@ for key, value in urlCategories.items():
                 else:
                     dfLivres.to_csv(fileNameLivres, mode='a', index=False, header=False, encoding='utf-8')
             else:
-                # indicesPagesPasPrises[key].append(i)
                 print("Len livres pas OK")
                 print("Nom", len(nom))
                 print("Description", len(description))
@@ -271,6 +258,7 @@ for key, value in urlCategories.items():
                 print("Editeur", len(editeur))
                 print("Prix", len(prix))
                 print("Auteur", len(auteur))
+                print("Categorie", len(categorie))
                 indicesPagesPasPrises2.append(i)
 
             if len(nomAuteur) == len(descAuteur) == len(photoAuteur):
@@ -289,7 +277,7 @@ for key, value in urlCategories.items():
                 print("Photo auteur", len(photoAuteur))
         except:
             print("PB recupération des liens des livres")
-            # indicesPagesPasPrises[key].append(i)
+
             indicesPagesPasPrises2.append(i)
 
         #  Sauvegarde des pages qui n'ont pas été scrapper par catégories-----------------------------------------------
@@ -300,8 +288,3 @@ for key, value in urlCategories.items():
 # Fermer le navigateur
 driver.quit()
 print("Le scrap est fini !!!!!!!!!!!!!!!!!")
-
-# ----------------------------------------------------------------------------------------------------------------------
-# la récupération des éléments de la liste des détails
-# la conversion du prix : string to float
-# ----------------------------------------------------------------------------------------------------------------------

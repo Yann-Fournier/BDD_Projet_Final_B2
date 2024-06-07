@@ -36,37 +36,41 @@ def load_data():
     
     insert_auth(3, hash_passwd("Yann"))
     insert_auth(4, hash_passwd("Adriana"))
-    
+
     # Toutes les catégories
     fichier_json_url_categories = 'Scrapping/CSV/Categories.json'
     with open(fichier_json_url_categories, 'r') as fichier_categories:
         contenu_categories = fichier_categories.read()  # Le code bug si je ne transforme pas le json en str en premier
         url_categories = json.loads(contenu_categories)
         keys = url_categories.keys()
-
     cpt = 0
     for key in keys:
         insert_categorie(cpt, key)
         cpt += 1
 
     # Tous les Auteurs
-    auteurs = pd.read_csv("Scrapping/CSV/Save/Combined_Authors.csv")
+    auteurs = pd.read_csv("Scrapping/CSV/Combined_Authors.csv")
     for i in range(len(auteurs)):
         insert_auteur(i, auteurs["Nom"][i], auteurs["Description"][i], auteurs["Photo"][i])
 
     # Tous les Livres
-    livres = pd.read_csv("Scrapping/CSV/Save/Combined_Books.csv")
-    cur.execute("SELECT Id FROM Categories WHERE Nom = 'Shōnen';")  # Id = 55
-    results_id_category = cur.fetchall()  # renvoie un tableau de tuple
+    livres = pd.read_csv("Scrapping/CSV/Combined_Books.csv")
     for i in range(len(livres)):
-        query = "SELECT Id FROM Auteurs WHERE Nom = '" + livres["Auteur"][i] + "';"
+        query_auteur = "SELECT Id FROM Auteurs WHERE Nom = '" + livres["Auteur"][i] + "';"
+        query_categorie = "SELECT Id FROM Categorie WHERE Nom = '" + livres["Categorie"][i] + "';"
         try:
-            cur.execute(query)
+            cur.execute(query_auteur)
         except:
-            print(query)
-            cur.execute(query)
+            print(query_auteur)
+            # cur.execute(queryAuteur)
         results_id_auteur = cur.fetchall()  # renvoie un tableau de tuple
-        insert_livre(i, results_id_auteur[0][0], results_id_category[0][0], str(livres["Nom"][i]),
+        try:
+            cur.execute(query_categorie)
+        except:
+            print(query_categorie)
+            # cur.execute(query_categorie)
+        results_id_categorie = cur.fetchall()  # renvoie un tableau de tuple
+        insert_livre(i, results_id_auteur[0][0], results_id_categorie[0][0], str(livres["Nom"][i]),
                      str(livres["Description"][i]), str(livres["Photo"][i]), str(livres["Isbn"][i]),
                      str(livres["Editeur"][i]), float(livres["Prix"][i]))
 
@@ -226,7 +230,8 @@ def insert_auth(Id, Token, data=None):
     conn.execute(
         "INSERT INTO Auth (Id, Token) VALUES(?, ?)", data)
     conn.commit()
-    
+
+
 #  Fonction pour remplir la database -----------------------------------------------------------------------------------
 load_sql()
 load_data()

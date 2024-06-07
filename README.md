@@ -5,9 +5,8 @@
 - modifier le MCD en supprimant la table Categories
 - modifier le script SQL => suppr table categorie et modif champs categorie dans Livres
 - modifier le remplissage de la database en consequence
-- modifier l'API à cause des de la suppression d'une table
 - recuperer les modif fait dans le repo principale
-- modif API pour ajouter l'ajout de collection quand on crée un utilisateur
+- modif API pour ajouter l'ajout de collection et le token quand on crée un utilisateur
 
 # BDD Projet Final B2 (avec Patchouf)
 

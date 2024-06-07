@@ -31,20 +31,29 @@ CREATE TABLE IF NOT EXISTS Auteurs
     PRIMARY KEY (Id)
 );
 
+CREATE TABLE IF NOT EXISTS Categories
+(
+    Id INTEGER,
+    Nom VARCHAR(100),
+
+    PRIMARY KEY (Id)
+);
+
 CREATE TABLE IF NOT EXISTS Livres
 (
     Id INTEGER,
     Id_Auteur INTEGER,
+    Id_Categorie INTEGER,
     Nom VARCHAR(100),
     Description VARCHAR(500),
     Photo VARCHAR(200),
     ISBN VARCHAR(50),
     Editeur VARCHAR(100),
     Prix FLOAT,
-    Categorie VARCHAR(100),
 
     PRIMARY KEY (Id),
-    FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id)
+    FOREIGN KEY (Id_Auteur) REFERENCES Auteurs (Id),
+    FOREIGN KEY (Id_Categorie) REFERENCES Categories (Id)
 );
 
 CREATE TABLE IF NOT EXISTS Collections

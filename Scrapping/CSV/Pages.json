@@ -11,7 +11,7 @@
     "Maladies transmissibles": [],
     "Gestion de la douleur": [],
     "Insuffisance cardiaque": [
-        4
+        5
     ],
     "Troubles du sommeil": [],
     "Systeme nerveux": [],
@@ -37,7 +37,7 @@
     "Culturisme et halt\u00e9rophilie": [],
     "Arts martiaux": [],
     "Jogging - Footing": [
-        3
+        5
     ],
     "Natation": [],
     "Marche": [],
@@ -52,9 +52,7 @@
     "Troubles anxieux": [],
     "Emotions": [
         1,
-        2,
-        3,
-        4
+        2
     ],
     "Sante personnelle": [],
     "Vieillissement": [],
@@ -101,13 +99,67 @@
     "Sociologie des organisations": [],
     "Sociologie historique": [],
     "Initiation a la sociologie": [],
-    "Culture": [],
-    "Immigration integration racisme": [],
-    "Violence et deviances": [],
-    "Depression": [],
-    "Famille": [],
-    "Conflits": [],
-    "Tueur en serie et profilage": [],
-    "Travail": [],
-    "Ethnologie et anthropologie": []
+    "Culture": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Immigration integration racisme": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Violence et deviances": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Depression": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Famille": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Conflits": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Tueur en serie et profilage": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Travail": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "Ethnologie et anthropologie": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ]
 }
