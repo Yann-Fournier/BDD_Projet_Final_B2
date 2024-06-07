@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Scrapping\CSV\AuteursPhobies.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Scrapping\CSV\AuteursPoesie.csv">
           <value>
             <Attribute>
@@ -46,6 +53,20 @@
           </value>
         </entry>
         <entry key="\Scrapping\CSV\LivresPoesie.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\LivresReferences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Scrapping\CSV\LivresSociologie des organisations.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
