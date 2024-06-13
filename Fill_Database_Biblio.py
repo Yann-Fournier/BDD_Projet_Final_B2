@@ -107,11 +107,11 @@ def load_data():
         insert_commentaires(3, i, "Ce livre est génial. :)")
         insert_commentaires(4, i, "J'adore ce livre. Il a vraiment changer ma vie !!!!!!")
 
-    # Ajout de certains Auteurs suivis
+    # Ajout de certains Utilisateurs suivis
     insert_users_suivi(3, 4)
     insert_users_suivi(4, 3)
 
-    # Ajout de certains Users suivis
+    # Ajout de certains Auteurs suivis
     insert_auteurs_suivi(3, 0)
     insert_auteurs_suivi(3, 1)
     insert_auteurs_suivi(3, 2)
