@@ -1,29 +1,32 @@
 #  -----------------------------------------------------------------------------------------------------------------------
-import pandas as pd
+var = "123456789"
+print(var[:5])
+#  -----------------------------------------------------------------------------------------------------------------------
+# import pandas as pd
 
-A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-B = [None, None, 3, 4, 5, 6, 7, 8, 9, 10]
-C = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-D = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# B = [None, None, 3, 4, 5, 6, 7, 8, 9, 10]
+# C = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# D = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-E = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-F = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-G = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-H = [11, 12, 13, 14, 15, 16, 17, 18, None, None]
+# E = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# F = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# G = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# H = [11, 12, 13, 14, 15, 16, 17, 18, None, None]
 
-test1 = pd.DataFrame({"A": A, "B": B, "C": C, "D": D})
+# test1 = pd.DataFrame({"A": A, "B": B, "C": C, "D": D})
 
-test1.to_csv("bidule.csv", encoding='utf-8', index=False)
+# test1.to_csv("bidule.csv", encoding='utf-8', index=False)
 
-test2 = pd.DataFrame({"E": E, "F": F, "G": G, "H": H})
+# test2 = pd.DataFrame({"E": E, "F": F, "G": G, "H": H})
 
-test2.to_csv("bidule.csv", mode='a', header=False, encoding='utf-8', index=False)
+# test2.to_csv("bidule.csv", mode='a', header=False, encoding='utf-8', index=False)
 
-test3 = pd.read_csv("bidule.csv")
-test3 = test3.dropna(subset=['B'])
-# test3.to_csv("truc.csv", encoding='utf-8', index=False)
+# test3 = pd.read_csv("bidule.csv")
+# test3 = test3.dropna(subset=['B'])
+# # test3.to_csv("truc.csv", encoding='utf-8', index=False)
 
-print(test3["B"][2])
+# print(test3["B"][2])
 # for i in range(len(test3)):
 #     print(test3["A"][i], test3["B"][i])
 #     print(test3.iloc[i])

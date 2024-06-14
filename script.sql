@@ -114,4 +114,4 @@ CREATE TABLE IF NOT EXISTS Auth
     Token VARCHAR(100),
 
     FOREIGN KEY (Id) REFERENCES Users (Id)
-)
+);
